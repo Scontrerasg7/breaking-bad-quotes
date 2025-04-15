@@ -1,6 +1,6 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import QuoteDisplay from "./QuoteDisplay";
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import QuoteDisplay from './QuoteDisplay';
 
 // Mock the fetch function
 const mockFetch = vi.fn();
@@ -8,10 +8,10 @@ const mockFetch = vi.fn();
 // Setup global fetch mock
 window.fetch = mockFetch;
 
-describe("QuoteDisplay Component", () => {
+describe('QuoteDisplay Component', () => {
   const mockQuote = {
-    quote: "I am the one who knocks!",
-    author: "Walter White",
+    quote: 'I am the one who knocks!',
+    author: 'Walter White',
   };
 
   beforeEach(() => {
@@ -19,16 +19,16 @@ describe("QuoteDisplay Component", () => {
     mockFetch.mockReset();
   });
 
-  it("renders loading state initially", () => {
+  it('renders loading state initially', () => {
     // Setup fetch to never resolve (to keep loading state)
     mockFetch.mockImplementation(() => new Promise(() => {}));
 
     render(<QuoteDisplay />);
 
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 
-  it("displays a quote when fetch is successful", async () => {
+  it('displays a quote when fetch is successful', async () => {
     // Setup fetch to return a successful response
     mockFetch.mockResolvedValueOnce({
       json: () => Promise.resolve([mockQuote]),
@@ -43,12 +43,12 @@ describe("QuoteDisplay Component", () => {
     });
 
     // Verify the button is present
-    expect(screen.getByText("Get Another Quote")).toBeInTheDocument();
+    expect(screen.getByText('Get Another Quote')).toBeInTheDocument();
   });
 
-  it("displays error message when fetch fails", async () => {
+  it('displays error message when fetch fails', async () => {
     // Setup fetch to return a failed response
-    mockFetch.mockRejectedValueOnce(new Error("Network error"));
+    mockFetch.mockRejectedValueOnce(new Error('Network error'));
 
     render(<QuoteDisplay />);
 
@@ -58,7 +58,7 @@ describe("QuoteDisplay Component", () => {
     });
   });
 
-  it("fetches a new quote when button is clicked", async () => {
+  it('fetches a new quote when button is clicked', async () => {
     // Setup initial fetch
     mockFetch.mockResolvedValueOnce({
       json: () => Promise.resolve([mockQuote]),
@@ -73,8 +73,8 @@ describe("QuoteDisplay Component", () => {
 
     // Setup second fetch with a different quote
     const newQuote = {
-      quote: "Yeah, science!",
-      author: "Jesse Pinkman",
+      quote: 'Yeah, science!',
+      author: 'Jesse Pinkman',
     };
 
     mockFetch.mockResolvedValueOnce({
@@ -82,7 +82,7 @@ describe("QuoteDisplay Component", () => {
     });
 
     // Click the button to fetch a new quote
-    fireEvent.click(screen.getByText("Get Another Quote"));
+    fireEvent.click(screen.getByText('Get Another Quote'));
 
     // Wait for the new quote to be displayed
     await waitFor(() => {

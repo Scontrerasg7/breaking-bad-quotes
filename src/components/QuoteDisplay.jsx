@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 const QuoteDisplay = () => {
   const [quote, setQuote] = useState(null);
@@ -9,7 +9,7 @@ const QuoteDisplay = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://api.breakingbadquotes.xyz/v1/quotes"
+        'https://api.breakingbadquotes.xyz/v1/quotes'
       );
       const data = await response.json();
       setQuote(data[0]);

@@ -1,11 +1,11 @@
-import QuoteDisplay from "./components/QuoteDisplay";
-import "./App.css";
-import { useEffect } from "react";
+import QuoteDisplay from './components/QuoteDisplay';
+import './App.css';
+import { useEffect } from 'react';
 
 function App() {
   // set browser tab title
   useEffect(() => {
-    document.title = "Breaking Bad Quotes";
+    document.title = 'Breaking Bad Quotes';
   }, []);
 
   return (
