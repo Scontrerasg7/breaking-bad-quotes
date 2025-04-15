@@ -1,12 +1,40 @@
-# React + Vite
+# Breaking Bad Quotes Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This web application displays random quotes from the TV show Breaking Bad. Users can view a random quote and author, and fetch a new random quote with the click of a button.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fetches and displays random Breaking Bad quotes using a public API
+- Shows the author of each quote
+- Button to get a new random quote
+- Responsive, modern UI with a dark theme
+- Fully tested with 100% code coverage for all app components
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+3. Run tests:
+   ```bash
+   npm test
+   ```
+4. View code coverage:
+   ```bash
+   npm run coverage
+   ```
+
+## Tech Stack
+
+- React
+- Vite
+- Vitest & React Testing Library
+
+## API
+
+Quotes are fetched from [breakingbadquotes.xyz](https://breakingbadquotes.xyz/).
