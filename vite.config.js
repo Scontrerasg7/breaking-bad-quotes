@@ -21,4 +21,16 @@ export default defineConfig({
       ],
     },
   },
+  server: {
+    middleware: [
+      (req, res, next) => {
+        if (req.url === '/health') {
+          res.statusCode = 200;
+          res.end();
+          return;
+        }
+        next();
+      },
+    ],
+  },
 });
