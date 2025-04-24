@@ -25,3 +25,5 @@ dist-ssr
 
 # test files
 coverage/
+
+cloudFormationCommands.txt

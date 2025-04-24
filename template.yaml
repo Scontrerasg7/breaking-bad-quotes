@@ -117,6 +117,8 @@ Resources:
       UnhealthyThresholdCount: 2
       HealthCheckIntervalSeconds: 15 # Nombre corregido
       HealthCheckTimeoutSeconds: 5 # Nombre corregido
+      Matcher:
+        HttpCode: '304'
       # --- Fin Propiedades de Health Check ---
       Tags:
         - Key: Environment
