@@ -1,4 +1,6 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import QuoteDisplay from './components/QuoteDisplay';
+import HealthCheck from './components/HealthCheck';
 import './App.css';
 import { useEffect } from 'react';
 
@@ -9,14 +11,19 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      <header>
-        <h1>Breaking Bad Quotes</h1>
-      </header>
-      <main>
-        <QuoteDisplay />
-      </main>
-    </div>
+    <Router>
+      <div className="app">
+        <header>
+          <h1>Breaking Bad Quotes</h1>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<QuoteDisplay />} />
+            <Route path="/health" element={<HealthCheck />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 

@@ -15,7 +15,7 @@ async function runE2ETest() {
     .build();
   try {
     // Go to the local app (assumes app is running on localhost:5173 or 8080)
-    await driver.get('http://localhost:5173');
+    await driver.get(process.env.APP_BASE_URL);
 
     // Wait for the quote card to appear
     await driver.wait(until.elementLocated(By.className('quote-card')), 10000);

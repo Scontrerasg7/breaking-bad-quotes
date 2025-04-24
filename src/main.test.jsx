@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
-import App from './App';
 
 // Mock react-dom/client
 vi.mock('react-dom/client', () => ({
