@@ -372,6 +372,8 @@ jobs:
       # 1. Checkout del código
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Obtener todo el historial de commits
 
       # 2. Configurar credenciales de AWS
       - name: Configure AWS Credentials
@@ -386,10 +388,18 @@ jobs:
       - name: Get Previous Image Tag
         id: get_previous_tag
         run: |
-          # Obtener el commit anterior
-          PREVIOUS_COMMIT=$(git rev-parse HEAD~1)
-          echo "Previous commit: $PREVIOUS_COMMIT"
-          echo "previous_commit=$PREVIOUS_COMMIT" >> $GITHUB_OUTPUT
+          # Verificar el historial de commits
+          git log --oneline -n 5
+
+          # Obtener el commit anterior de manera segura
+          if [ $(git rev-list --count HEAD) -gt 1 ]; then
+            PREVIOUS_COMMIT=$(git rev-parse HEAD~1)
+            echo "Previous commit: $PREVIOUS_COMMIT"
+            echo "previous_commit=$PREVIOUS_COMMIT" >> $GITHUB_OUTPUT
+          else
+            echo "No previous commits found. Using current commit for rollback."
+            echo "previous_commit=${{ github.sha }}" >> $GITHUB_OUTPUT
+          fi
 
       # 4. Desplegar la versión anterior
       - name: Deploy Previous Version
