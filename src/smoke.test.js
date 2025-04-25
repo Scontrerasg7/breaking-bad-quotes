@@ -17,7 +17,7 @@ async function runSmokeTests() {
   try {
     // Test 1: Application loads successfully
     console.log('Test 1: Verifying application loads...');
-    await driver.get(process.env.APP_BASE_URL);
+    await driver.get('http://localhost:5173');
     console.log('✓ Application loaded successfully');
 
     // Test 2: Main components are present
@@ -36,7 +36,7 @@ async function runSmokeTests() {
     // Test 3: Initial quote is displayed
     console.log('Test 3: Verifying initial quote display...');
     const quoteElem = await driver.findElement(
-      By.css('.quote-card blockquote p')
+      By.css('.non-existent-class blockquote p')
     );
     const authorElem = await driver.findElement(By.css('.quote-card footer p'));
     const initialQuote = await quoteElem.getText();
