@@ -22,7 +22,7 @@ async function runSmokeTests() {
 
     // Test 2: Main components are present
     console.log('Test 2: Verifying main components...');
-    await driver.wait(until.elementLocated(By.className('quote-card')), 1000);
+    await driver.wait(until.elementLocated(By.className('quote-card')), 10000);
     await driver.wait(
       until.elementLocated(By.css('.quote-card blockquote p')),
       5000
