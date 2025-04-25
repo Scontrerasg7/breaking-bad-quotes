@@ -424,14 +424,14 @@ jobs:
       - name: Force New Deployment with Previous Version
         run: |
           echo "Forcing new deployment with previous version..."
-          aws ecs update-service --cluster ${{ needs.deploy-cfn-prod.outputs.cluster_name_prod }} \
-                                --service ${{ needs.deploy-cfn-prod.outputs.service_name_prod }} \
+          aws ecs update-service --cluster brbad-production-cluster \
+                                --service brbad-production-service \
                                 --force-new-deployment \
                                 --region us-east-1
 
           echo "Waiting for rollback deployment to stabilize..."
-          aws ecs wait services-stable --cluster ${{ needs.deploy-cfn-prod.outputs.cluster_name_prod }} \
-                                      --services ${{ needs.deploy-cfn-prod.outputs.service_name_prod }} \
+          aws ecs wait services-stable --cluster brbad-production-cluster \
+                                      --services brbad-production-service \
                                       --region us-east-1
           echo "Rollback deployment stable."
 
